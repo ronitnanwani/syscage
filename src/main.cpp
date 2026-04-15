@@ -77,7 +77,15 @@ finish_options:
     // Generate a unique hostname for this container instance
     config.hostname = generate_hostname();
 
-    // Launch the container
+    fprintf(stderr,"argc = %d\n",config.argc);
+    fprintf(stderr,"uid = %d\n",config.uid);
+    fprintf(stderr,"mount_dir = %s\n",config.mount_dir.c_str());
+    fprintf(stderr,"hostname = %s\n",config.hostname.c_str());
+    fprintf(stderr,"command = %s\n",config.command.c_str());
+    for(int i = 0; i < config.argv.size(); i++) {
+        fprintf(stderr,"argv[%d] = %s\n",i,config.argv[i]);
+    }
+
     Container container(config);
     err = container.start();
 

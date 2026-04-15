@@ -76,5 +76,14 @@ int setup_mounts(const ContainerConfig& config) {
     }
     fprintf(stderr, "done.\n");
 
+    // 7. Mount /proc so tools like ps, top, etc. work inside the container
+    fprintf(stderr, "=> mounting /proc...");
+    mkdir("/proc", 0555);
+    if (mount("proc", "/proc", "proc", 0, nullptr)) {
+        fprintf(stderr, "failed! %m\n");
+        return -1;
+    }
+    fprintf(stderr, "done.\n");
+
     return 0;
 }
