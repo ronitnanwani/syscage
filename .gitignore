@@ -1,0 +1,9 @@
+# CMake and Build Artifacts
+build/
+
+# Object Files and Executables
+*.o
+*.a
+*.so
+*.out
+syscage
